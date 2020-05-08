@@ -28,17 +28,17 @@ class Login extends React.Component {
   };
 
   render() {
-    const { users, isLoading, isAuthed } = this.props;
+    const { users, loading, userAuthenticated } = this.props;
     const { userSelected } = this.state;
 
-    if (isAuthed) {
+    if (userAuthenticated) {
       const { from } = this.props.location.state || { from: { pathname: '/' } };
       return <Redirect to={from} />;
     }
 
     return (
       <div>
-        {isLoading ?
+        {loading ?
           null : (
           <div>
             <LoadingBar />
@@ -69,10 +69,10 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users, login }) => ({
+const mapStateToProps = ({ users, auth }) => ({
   isLoading: users === null,
   users,
-  isAuthed: login.authenticated
+  userAuthenticated: auth.authenticated
 });
 
 export default connect(mapStateToProps)(Login);
