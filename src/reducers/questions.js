@@ -1,6 +1,6 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION, ADD_ANSWER } from '../actions/questions';
 
-const questions = ({ state = {}, action }) => {
+const questions = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_QUESTIONS:
       return {
