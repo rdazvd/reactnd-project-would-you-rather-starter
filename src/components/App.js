@@ -10,6 +10,7 @@ import { LoadingBar } from 'react-redux-loading';
 
 import Dashboard from './Dashboard';
 import Login from './Login';
+import Logout from './Logout';
 import NavBar from './NavBar';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -27,12 +28,13 @@ class App extends React.Component {
           { loading ? null : (
             <div>
               <Switch>
-                <ProtectedRoute 
-                  exact path='/' 
-                  component={Dashboard} 
-                  isAuthenticated={userAuthenticated} 
+                <ProtectedRoute
+                  exact path='/'
+                  component={Dashboard}
+                  isAuthenticated={userAuthenticated}
                 />
-                <Route exact path='/login' component={withRouter(Login)} /> 
+                <Route path='/login' component={withRouter(Login)} />
+                <Route path='/logout' component={withRouter(Logout)} />
               </Switch>
             </div>
           ) }

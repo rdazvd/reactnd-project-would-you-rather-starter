@@ -36,5 +36,6 @@ export {
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT_SUCCESS,
   handleLoginUser,
-  handleLogoutUser
+  handleLogoutUser,
+  receiveAuthLogout
 };
