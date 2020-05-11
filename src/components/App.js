@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter 
+} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
 import Login from './Login';
@@ -16,7 +21,11 @@ class App extends React.Component {
           { loading ? null : (
             <div>
               <Switch>
-                <ProtectedRoute exact path='/' component={Dashboard} isAuthenticated={userAuthenticated} />
+                <ProtectedRoute 
+                  exact path='/' 
+                  component={Dashboard} 
+                  isAuthenticated={userAuthenticated} 
+                />
                 <Route exact path='/login' component={withRouter(Login)} /> 
               </Switch>
             </div>

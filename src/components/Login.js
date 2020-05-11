@@ -14,7 +14,7 @@ class Login extends React.Component {
     this.props.dispatch(handleGetUsers());
   }
 
-  handleSelectUser = event =>
+  handleChange = event =>
     this.setState({
       selectedUSer: event.target.value
     });
@@ -28,42 +28,38 @@ class Login extends React.Component {
   };
 
   render() {
-    const { users, loading, userAuthenticated } = this.props;
+    const { users, userAuthenticated } = this.props;
     const { userSelected } = this.state;
 
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
     if (userAuthenticated) {
-      const { from } = this.props.location.state || { from: { pathname: '/' } };
       return <Redirect to={from} />;
     }
 
     return (
       <div>
-        {loading ?
-          null : (
+        <LoadingBar />
+        <h2>Login</h2>
+        <p>Please login as:</p>
+        <form onSubmit={this.handleSubmit}>
           <div>
-            <LoadingBar />
-            <h2>Login</h2>
-            <p>Please login as:</p>
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <select onchange={this.handleChange}>
-                  <option></option>
-                  {
-                    Object.keys(users).map(user =>
-                      <option 
-                        key={users[user].id}
-                        value={users[user].id}
-                      >
-                        users[user].name
-                      </option> 
-                    )
-                  }
-                </select>
-              </div>
-              <button disabled={!!userSelected}>Login</button>
-            </form>
+            <select onChange={this.handleChange}>
+              <option></option>
+              {
+                Object.keys(users).map(user =>
+                  <option 
+                    key={users[user].id}
+                    value={users[user].id}
+                  >
+                    {users[user].name}
+                  </option> 
+                )
+              }
+            </select>
           </div>
-        )}
+          <button disabled={!!userSelected}>Login</button>
+        </form>
       </div>
     );
   }
@@ -72,7 +68,7 @@ class Login extends React.Component {
 const mapStateToProps = ({ users, auth }) => ({
   isLoading: users === null,
   users,
-  userAuthenticated: auth.authenticated
+  userAuthenticated: auth.userAuthenticated
 });
 
 export default connect(mapStateToProps)(Login);
