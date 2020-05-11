@@ -6,18 +6,24 @@ import {
   withRouter 
 } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { LoadingBar } from 'react-redux-loading';
+
 import Dashboard from './Dashboard';
 import Login from './Login';
+import NavBar from './NavBar';
 import ProtectedRoute from './ProtectedRoute';
-import { LoadingBar } from 'react-redux-loading';
 
 class App extends React.Component {
   render() {
-    const { loading, userAuthenticated } = this.props;
+    const { loading, loggedInUser, userAuthenticated } = this.props;
+    console.log(userAuthenticated);
     return (
       <Router>
         <>
           <LoadingBar />
+          { userAuthenticated ? (
+            <NavBar loggedInUser={loggedInUser} />
+          ) : null }
           { loading ? null : (
             <div>
               <Switch>
@@ -36,8 +42,9 @@ class App extends React.Component {
   } 
 }
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps = ({auth}) => ({
   loading: false,
+  loggedInUser: auth.loggedInUser,
   userAuthenticated: auth.userAuthenticated
 });
 
