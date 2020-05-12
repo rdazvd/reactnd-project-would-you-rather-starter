@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Question from './Question';
 
 class Question extends React.Component {
   state = { viewPollLink: '' };
@@ -34,7 +33,7 @@ class Question extends React.Component {
           <img src={question.avatar} alt={`Avatar of ${question.name}`} />
         </div>
         <div>
-          <p>{question.optionOne.text} <strong>OR</strong>{question.optionTwo.text}</p>
+          <p>{question.optionOne.text} <strong>OR</strong> {question.optionTwo.text}</p>
           <Link to={viewPollLink}><button>View Poll</button></Link>
         </div>
       </div>
@@ -46,7 +45,7 @@ const mapStateToProps = ({ auth, questions, users }, { id, questionSet }) => {
   const question = questions[id];
 
   return {
-    authedUser: auth.loggedinUser.id,
+    authedUser: auth.loggedInUser.id,
     question,
     questionSet
   };
