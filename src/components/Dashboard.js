@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleGetQuestions } from "../actions/questions";
+import Question from './Question';
 
 class Dashboard extends React.Component {
   state = {
-    questionsToBeShowed: 'unanswered',
     activeTab: 'unanswered'
   };
 
@@ -14,18 +14,22 @@ class Dashboard extends React.Component {
 
   handleTabChange = tab =>
     this.setState({
-      questionsToBeShowed: tab,
       activeTab: tab 
     });
 
   render() {
-    const { activeTab, questionsToBeShowed  } = this.state;
+    const { activeTab } = this.state;
+    const { questionIds } = this.props;
 
     return (
       <div>
         <div>
           <button onClick={() => this.handleTabChange('unanswered')}>Unanswered questions</button>
           <button onClick={() => this.handleTabChange('answered')}>Answered questions</button>
+        </div>
+        <div>
+          {questionIds.map(id => 
+            <Question key={id} id={id} questionSet={activeTab} />)}
         </div>
       </div>
     );
