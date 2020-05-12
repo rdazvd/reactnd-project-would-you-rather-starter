@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { formatQuestion } from '../utils/helpers';
 
 class Question extends React.Component {
   state = { viewPollLink: '' };
@@ -21,11 +22,11 @@ class Question extends React.Component {
     if (
       questionSet === 'answered' 
       && question.hasVoted !== true
-    ) return;
+    ) return null;
     else if (
       questionSet === 'unanswered' 
       && question.hasVoted === true
-    ) return;
+    ) return null;
 
     return (
       <div>
@@ -46,7 +47,7 @@ const mapStateToProps = ({ auth, questions, users }, { id, questionSet }) => {
 
   return {
     authedUser: auth.loggedInUser.id,
-    question,
+    question: formatQuestion(question, users[question.author], auth.loggedInUser.id),
     questionSet
   };
 };
