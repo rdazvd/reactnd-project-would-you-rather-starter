@@ -16,6 +16,22 @@ class NewQuestion extends React.Component {
     this.setState({ [targetOptionText]: text });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { optionOneText, optionTwoText } = this.state;
+    const { dispatch } = this.props;
+
+    this.setState({ hasSubmitted: true });
+    dispatch(handleAddQuestion(optionOneText, optionTwoText, () =>
+      this.setState({
+        optionOneText: '',
+        optionTwoTExt: '',
+        toDashboard: true 
+      })
+    ));
+  };
+
   render() {
     const {
       optionOneText,
