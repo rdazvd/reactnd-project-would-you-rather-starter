@@ -5,7 +5,8 @@ const NavBar = ({loggedInUser}) => (
   <div>
     <nav>
       <ul>
-        <NavLink to='/'>Home</NavLink>
+        <NavLink exact to='/'>Home</NavLink>
+        <NavLink exact to='/add'>New Question</NavLink>
       </ul>
     </nav>
     <Link to='/logout'><button>Logout</button></Link>

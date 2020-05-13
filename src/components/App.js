@@ -13,6 +13,7 @@ import Dashboard from './Dashboard';
 import Login from './Login';
 import Logout from './Logout';
 import NavBar from './NavBar';
+import NewQuestion from './NewQuestion';
 import ProtectedRoute from './ProtectedRoute';
 import QuestionPoll from './QuestionPoll';
 
@@ -34,17 +35,22 @@ class App extends React.Component {
             <div>
               <Switch>
                 <ProtectedRoute
-                  exact path='/'
+                  path='/' exact
                   component={Dashboard}
                   isAuthenticated={userAuthenticated}
                 />
                 <ProtectedRoute
-                  exact path='/question/:id'
+                  path='/question/:id' exact
                   component={connect(mapStateToProps)(QuestionPoll)}
                   isAuthenticated={userAuthenticated}
                 />
-                <Route exact path='/login' component={withRouter(Login)} />
-                <Route exact path='/logout' component={withRouter(Logout)} />
+                <ProtectedRoute
+                  path='/add' exact
+                  component={NewQuestion}
+                  isAuthenticated={userAuthenticated}
+                />
+                <Route path='/login' exact  component={withRouter(Login)} />
+                <Route path='/logout' exact component={withRouter(Logout)} />
               </Switch>
             </div>
           ) }
