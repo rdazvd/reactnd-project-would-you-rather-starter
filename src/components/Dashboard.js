@@ -1,17 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleGetQuestions } from "../actions/questions";
 import Question from './Question';
 
 class Dashboard extends React.Component {
   state = {
     activeTab: 'unanswered'
   };
-
-  componentDidMount() {
-    this.props.dispatch(handleGetQuestions())
-  }
-
   handleTabChange = tab =>
     this.setState({
       activeTab: tab 

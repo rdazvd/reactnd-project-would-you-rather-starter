@@ -8,16 +8,21 @@ import {
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
 
+import { handleGetQuestions } from "../actions/questions";
 import Dashboard from './Dashboard';
 import Login from './Login';
 import Logout from './Logout';
 import NavBar from './NavBar';
 import ProtectedRoute from './ProtectedRoute';
+import QuestionPoll from './QuestionPoll';
 
 class App extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(handleGetQuestions())
+  }
+
   render() {
     const { loading, loggedInUser, userAuthenticated } = this.props;
-    console.log(userAuthenticated);
     return (
       <Router>
         <>
@@ -33,8 +38,13 @@ class App extends React.Component {
                   component={Dashboard}
                   isAuthenticated={userAuthenticated}
                 />
-                <Route path='/login' component={withRouter(Login)} />
-                <Route path='/logout' component={withRouter(Logout)} />
+                <ProtectedRoute
+                  exact path='/question/:id'
+                  component={connect(mapStateToProps)(QuestionPoll)}
+                  isAuthenticated={userAuthenticated}
+                />
+                <Route exact path='/login' component={withRouter(Login)} />
+                <Route exact path='/logout' component={withRouter(Logout)} />
               </Switch>
             </div>
           ) }

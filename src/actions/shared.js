@@ -3,7 +3,7 @@ import { saveQuestion, saveAnswer } from '../utils/api';
 import { addUserQuestion, addUserAnswer } from './users';
 import { addQuestion, addAnswer } from './questions';
 
-export const handleAnswer = (questionId, selectedOption) =>
+export const handleAddAnswer = (questionId, selectedOption) =>
   (dispatch, getState) => {
     dispatch(showLoading());
 
