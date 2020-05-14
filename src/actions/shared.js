@@ -12,7 +12,7 @@ export const handleAddAnswer = (questionId, selectedOption) =>
 
     saveAnswer({
       authedUser,
-      questionId,
+      qid: questionId,
       answer: selectedOption
     }).then(() => {
       dispatch(addAnswer(authedUser, questionId, selectedOption));

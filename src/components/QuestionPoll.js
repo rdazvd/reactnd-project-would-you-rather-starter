@@ -9,6 +9,11 @@ class QuestionPoll extends React.Component {
     answerSubmitted: false
   };
 
+  handleInputChange = event =>
+    this.setState({ 
+      optionSelected: event.target.value
+    });
+
   handleSubmit = (event, questionId) => {
     event.preventDefault();
 
@@ -26,7 +31,7 @@ class QuestionPoll extends React.Component {
   render() {
     const { optionSelected, answerSubmitted } = this.state;
     const { id, question, author, pageNotFound } = this.props;
-    console.log(question);
+
     if (pageNotFound) return <p>Page not found</p>;
     if (answerSubmitted) return <Redirect to={`/question/${id}/results`} />;
 
@@ -65,7 +70,7 @@ class QuestionPoll extends React.Component {
                 {question.optionTwo.text}
               </label>
             </div>
-            <button disabled={!!optionSelected}>Submit</button>
+            <button disabled={!optionSelected}>Submit</button>
           </form>
         </div>
       </div>
