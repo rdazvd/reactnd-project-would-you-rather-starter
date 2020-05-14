@@ -16,7 +16,7 @@ import NavBar from './NavBar';
 import NewQuestion from './NewQuestion';
 import ProtectedRoute from './ProtectedRoute';
 import QuestionPoll from './QuestionPoll';
-import QuestionPollResults from '../actions/QuestionPollResults';
+import QuestionPollResults from './QuestionPollResults';
 
 class App extends React.Component {
   componentDidMount() {
