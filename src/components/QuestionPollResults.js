@@ -49,4 +49,4 @@ const mapStateToProps = ({questions, users} , props) => {
   }
 };
 
-export default connect()(QuestionPollResults);
+export default connect(mapStateToProps)(QuestionPollResults);

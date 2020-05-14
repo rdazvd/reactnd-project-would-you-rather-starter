@@ -46,7 +46,7 @@ class App extends React.Component {
                   isAuthenticated={userAuthenticated}
                 />
                 <ProtectedRoute
-                  path='/question/:results' exact
+                  path='/question/:id/results' exact
                   component={connect(mapStateToProps)(QuestionPollResults)}
                   isAuthenticated={userAuthenticated}
                 />
