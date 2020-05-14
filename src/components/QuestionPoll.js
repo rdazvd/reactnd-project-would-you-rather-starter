@@ -9,6 +9,20 @@ class QuestionPoll extends React.Component {
     answerSubmitted: false
   };
 
+  handleSubmit = (event, questionId) => {
+    event.preventDefault();
+
+    const {dispatch} = this.props;
+    const {optionSelected} = this.state;
+
+    dispatch(handleAddAnswer(questionId, optionSelected));
+
+    this.setState({
+      optionSelected: '',
+      answerSubmitted: true
+    });
+  };
+
   render() {
     const { optionSelected, answerSubmitted } = this.state;
     const { id, question, author, pageNotFound } = this.props;
