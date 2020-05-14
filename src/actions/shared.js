@@ -21,7 +21,7 @@ export const handleAddAnswer = (questionId, selectedOption) =>
     });
   };
 
-export const handleAddQestion = (optionOneText, optionTwoText, callback) =>
+export const handleAddQuestion = (optionOneText, optionTwoText, callback) =>
   (dispatch, getState) => {
     dispatch(showLoading());
 
