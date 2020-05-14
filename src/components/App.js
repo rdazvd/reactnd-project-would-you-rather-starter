@@ -16,6 +16,7 @@ import NavBar from './NavBar';
 import NewQuestion from './NewQuestion';
 import ProtectedRoute from './ProtectedRoute';
 import QuestionPoll from './QuestionPoll';
+import QuestionPollResults from '../actions/QuestionPollResults';
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,6 +43,11 @@ class App extends React.Component {
                 <ProtectedRoute
                   path='/question/:id' exact
                   component={connect(mapStateToProps)(QuestionPoll)}
+                  isAuthenticated={userAuthenticated}
+                />
+                <ProtectedRoute
+                  path='/question/:results' exact
+                  component={connect(mapStateToProps)(QuestionPollResults)}
                   isAuthenticated={userAuthenticated}
                 />
                 <ProtectedRoute
