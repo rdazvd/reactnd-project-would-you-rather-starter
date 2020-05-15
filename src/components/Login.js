@@ -3,6 +3,12 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleGetUsers } from '../actions/users';
 import { handleLoginUser } from '../actions/auth';
+import { 
+  Button,
+  Col,
+  Container,
+  Row 
+} from 'react-bootstrap';
 import LoadingBar from 'react-redux-loading';
 
 class Login extends React.Component {
@@ -16,20 +22,20 @@ class Login extends React.Component {
 
   handleChange = event =>
     this.setState({
-      selectedUSer: event.target.value
+      selectedUser: event.target.value
     });
   
   handleSubmit = event => {
     event.preventDefault();
     const { dispatch } = this.props;
-    const { selectedUSer } = this.state;
+    const { selectedUser } = this.state;
 
-    dispatch(handleLoginUser(selectedUSer));
+    dispatch(handleLoginUser(selectedUser));
   };
 
   render() {
     const { users, userAuthenticated } = this.props;
-    const { userSelected } = this.state;
+    const { selectedUser } = this.state;
 
     const { from } = this.props.location.state || { from: { pathname: '/' } };
 
@@ -40,26 +46,43 @@ class Login extends React.Component {
     return (
       <div>
         <LoadingBar />
-        <h2>Login</h2>
-        <p>Please login as:</p>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <select onChange={this.handleChange}>
-              <option></option>
-              {
-                Object.keys(users).map(user =>
-                  <option 
-                    key={users[user].id}
-                    value={users[user].id}
-                  >
-                    {users[user].name}
-                  </option> 
-                )
-              }
-            </select>
-          </div>
-          <button disabled={!!userSelected}>Login</button>
-        </form>
+        <Container>
+          <Row 
+            className='align-content-center justify-content-center'
+            style={{ height: '60vh' }}
+          >
+            <Col xs='auto'>
+              <div style={{ textAlign: 'center' }}>
+                <h1>Login</h1>
+                <p>Please select a user to login as below:</p>
+              </div>
+              <form>
+                <div>
+                  <select className='custom-select' onChange={this.handleChange}>
+                    <option></option>
+                    {
+                      Object.keys(users).map(user =>
+                        <option 
+                          key={users[user].id}
+                          value={users[user].id}
+                        >
+                          {users[user].name}
+                        </option> 
+                      )
+                    }
+                  </select>
+                </div>
+                <Button 
+                  onClick={e => this.handleSubmit(e)}
+                  disabled={selectedUser === ''}
+                  style={{ marginTop: '1rem', width: '100%' }}
+                >
+                  Login
+                </Button>
+              </form>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
