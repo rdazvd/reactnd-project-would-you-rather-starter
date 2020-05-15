@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { handleAddAnswer } from '../actions/shared';
+import PageNotFound from './PageNotFound';
 
 class QuestionPoll extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class QuestionPoll extends React.Component {
     const { optionSelected, answerSubmitted } = this.state;
     const { id, question, author, pageNotFound } = this.props;
 
-    if (pageNotFound) return <p>Page not found</p>;
+    if (pageNotFound) return <PageNotFound />;
     if (answerSubmitted) return <Redirect to={`/question/${id}/results`} />;
 
     return (

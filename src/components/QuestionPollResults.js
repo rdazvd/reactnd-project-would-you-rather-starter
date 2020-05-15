@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PageNotFound from './PageNotFound';
 
 const QuestionPollResults = ({ question, author, pageNotFound }) => {
-  if (pageNotFound) return <p>Page not found</p>;
+  if (pageNotFound) return <PageNotFound />;
 
   const optionOneVotes = question.optionOne.votes;
   const optionTwoVotes = question.optionTwo.votes;
