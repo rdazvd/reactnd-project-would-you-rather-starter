@@ -44,9 +44,7 @@ const NavBar = ({loggedInUser}) => (
                   Hello {loggedInUser.name}
                 </span>
               </li>
-              <li>
-                <Link className='nav-item nav-link' to='/logout'>Logout</Link>
-              </li>
+              <Link className='nav-item nav-link' to='/logout'>Logout</Link>
             </ul>
           </Col>
         </Row>
