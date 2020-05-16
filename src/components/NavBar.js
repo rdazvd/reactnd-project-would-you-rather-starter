@@ -14,14 +14,40 @@ const NavBar = ({loggedInUser}) => (
         <Row className='justify-content-between' style={{ width: '100vw' }}>
           <Col xs='auto'>
             <ul className='navbar-nav'>
-              <NavLink className='nav-item nav-link' exact to='/'>Home</NavLink>
-              <NavLink className='nav-item nav-link' exact to='/add'>New Question</NavLink>
-              <NavLink className='nav-item nav-link' exact to='/add'>Leaderboard</NavLink>
+              <NavLink 
+                activeClassName='active'
+                className='nav-item nav-link' 
+                exact to='/'
+              >
+                Home
+              </NavLink>
+              <NavLink 
+                activeClassName='active'
+                className='nav-item nav-link'
+                exact to='/add'
+              >
+                New Question
+              </NavLink>
+              <NavLink 
+                activeClassName='active'
+                className='nav-item nav-link'
+                exact to='/leaderboard'
+              >
+                Leaderboard
+              </NavLink>
             </ul>
           </Col>
           <Col xs='auto'>
-            <span className='navbar-text text-info'>Hello {loggedInUser.name}</span>
-            <span className='navbar-item'><Link to='/logout'>Logout</Link></span>
+            <ul className='navbar-nav'>
+              <li className='nav-item'>
+                <span className='navbar-text mr-3 text-info'>
+                  Hello {loggedInUser.name}
+                </span>
+              </li>
+              <li>
+                <Link className='nav-item nav-link' to='/logout'>Logout</Link>
+              </li>
+            </ul>
           </Col>
         </Row>
       </Container>
