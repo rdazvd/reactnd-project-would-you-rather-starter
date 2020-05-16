@@ -1,5 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { 
+  Button,
+  Col,
+  Container,
+  Row
+ } from 'react-bootstrap';
 import Question from './Question';
 
 class Dashboard extends React.Component {
@@ -16,16 +22,29 @@ class Dashboard extends React.Component {
     const { questionIds } = this.props;
 
     return (
-      <div>
-        <div>
-          <button onClick={() => this.handleTabChange('unanswered')}>Unanswered questions</button>
-          <button onClick={() => this.handleTabChange('answered')}>Answered questions</button>
-        </div>
-        <div>
-          {questionIds.map(id => 
-            <Question key={id} id={id} questionSet={activeTab} />)}
-        </div>
-      </div>
+      <Container>
+        <Row className='justify-content-center mt-4 mb-4'>
+          <Col xs='auto'>
+            <Button 
+              onClick={() => this.handleTabChange('unanswered')}
+              className='mr-1'
+            >
+              Unanswered questions
+            </Button>
+            <Button 
+              onClick={() => this.handleTabChange('answered')}
+              className='ml-1'
+            >
+              Answered questions
+            </Button>
+          </Col>
+        </Row>
+          {questionIds.map(id => (
+            <Row className='justify-content-center mt-2 mb-3'>
+              <Question key={id} id={id} questionSet={activeTab} />
+            </Row>
+          ))}
+      </Container>
     );
   }
 }
