@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
     const { questionIds } = this.props;
 
     return (
-      <Container>
+      <Container className='pb-5'>
         <Row className='justify-content-center mt-4 mb-4'>
           <Col xs='auto'>
             <Button 
