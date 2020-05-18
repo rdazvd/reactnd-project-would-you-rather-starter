@@ -10,6 +10,7 @@ import { LoadingBar } from 'react-redux-loading';
 
 import { handleGetQuestions } from "../actions/questions";
 import Dashboard from './Dashboard';
+import Leaderboard from './Leaderboard';
 import Login from './Login';
 import Logout from './Logout';
 import NavBar from './NavBar';
@@ -48,6 +49,11 @@ class App extends React.Component {
                 <ProtectedRoute
                   path='/question/:id/results' exact
                   component={connect(mapStateToProps)(QuestionPollResults)}
+                  isAuthenticated={userAuthenticated}
+                />
+                <ProtectedRoute
+                  path='/leaderboard' exact
+                  component={Leaderboard}
                   isAuthenticated={userAuthenticated}
                 />
                 <ProtectedRoute
