@@ -40,8 +40,8 @@ class Dashboard extends React.Component {
           </Col>
         </Row>
           {questionIds.map(id => (
-            <Row className='justify-content-center mt-2 mb-3'>
-              <Question key={id} id={id} questionSet={activeTab} />
+            <Row key={id} className='justify-content-center mt-2 mb-3'>
+              <Question id={id} questionSet={activeTab} />
             </Row>
           ))}
       </Container>
