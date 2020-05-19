@@ -1,100 +1,44 @@
-# Would You Rather Project
+# Would You Rather...? Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+This project represents the second course project for Udacity's React Nanodegree course.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+## Setup
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+To setup the project to run:
 
-## Data
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
 
-There are two types of objects stored in our database:
+## Usage
 
-* Users
-* Questions
+# Logging in
 
-### Users
+To log in, choose one of the users from the drop down list and click the "Login" button.
 
-Users include:
+# Home view
 
-| Attribute    | Type             | Description           |
-|-----------------|------------------|-------------------         |
-| id                 | String           | The user’s unique identifier |
-| name          | String           | The user’s first name  and last name     |
-| avatarURL  | String           | The path to the image file |
-| questions | Array | A list of ids of the polling questions this user created|
-| answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
+Afted logging in, the user is shown a list of unanswered questions.
 
-### Questions
+* To view all of the user's previously answered polls, click on the "Answered Questions" button
+* Click on the "Unanswered Questions" button to go back to the initial view
+* On any moment of the application's usage, the user can click the "Home" option form the top navigation bar to return to this view
 
-Questions include:
+# Voting
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id                  | String | The question’s unique identifier |
-| author        | String | The author’s unique identifier |
-| timestamp | String | The time when the question was created|
-| optionOne | Object | The first voting option|
-| optionTwo | Object | The second voting option|
+To vote on a poll, click on the "View Poll" button of the desired poll.
+Select one of the options, then click on the "Submit" button to send the vote.
+After submitting, the user is led to a view showing the current poll results.
 
-### Voting Options
+# Seeing the leaderboard
 
-Voting options are attached to questions. They include:
+To see a leaderboard, click on the Leaderboard option. 
+It will show a rank of users based on the sum of created questions and submitted answers.
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| votes             | Array | A list that contains the id of each user who voted for that option|
-| text                | String | The text of the option |
+# Creating a new question
 
-Your code will talk to the database via 4 methods:
+To create a new question, click on the "New Question" option on the top navigation bar.
+The user will be led to a form containing two text boxes, respectively representing the first and the second option, and a submit button at the bottom. Fill in the form and submit to create a new question (it will be shown at the top at the unanswered questions list in the home view).
 
-* `_getUsers()`
-* `_getQuestions()`
-* `_saveQuestion(question)`
-* `_saveQuestionAnswer(object)`
+# Logout
 
-1) `_getUsers()` Method
-
-*Description*: Get all of the existing users from the database.  
-*Return Value*: Object where the key is the user’s id and the value is the user object.
-
-2) `_getQuestions()` Method
-
-*Description*: Get all of the existing questions from the database.  
-*Return Value*: Object where the key is the question’s id and the value is the question object.
-
-3) `_saveQuestion(question)` Method
-
-*Description*: Save the polling question in the database.  
-*Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| author | String | The id of the user who posted the question|
-| optionOneText| String | The text of the first option |
-| optionTwoText | String | The text of the second option |
-
-*Return Value*:  An object that has the following properties: `id`, `author`, `optionOne`, `optionTwo`, `timestamp`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id | String | The id of the question that was posted|
-| author | String | The id of the user who posted the question|
-| optionOne | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-| optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-|timestamp|String | The time when the question was created|
-
-4) `_saveQuestionAnswer(object)` Method
-
-*Description*: Save the answer to a particular polling question in the database.
-*Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
-
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| authedUser | String | The id of the user who answered the question|
-| qid | String | The id of the question that was answered|
-| answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+To log out from the application, click on the "Logout" option at the right end of the top navigation bar.
