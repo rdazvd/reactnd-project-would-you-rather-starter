@@ -10,38 +10,7 @@ import {
 } from 'react-bootstrap';
 import PageNotFound from './PageNotFound';
 
-class QuestionPollResults extends React.Component {
-  state = {
-    optionOneVariant: '',
-    optionOneLabel: '',
-    optionTwoVariant: '',
-    optionTwoLabel: ''
-  };
-
-  componentDidMount() {
-    const { author, question } = this.props;
-    const questionOneVotes = question.optionOne.votes;
-    const questionTwoVotes = question.optionTwo.votes;
-
-    this.setState({
-      optionOneVariant: questionOneVotes.includes(author.id)
-        ? 'success'
-        : 'info',
-      optionOneLabel: questionOneVotes.includes(author.id)
-        ? 'Chosen Answer'
-        : '',
-      optionTwoVariant: questionTwoVotes.includes(author.id)
-        ? 'success'
-        : 'info',
-      optionTwoLabel: questionTwoVotes.includes(author.id)
-        ? 'Chosen Answer'
-        : '',
-    });
-  }
-
-  render() {
-    const { question, author, pageNotFound } = this.props;
-    
+const QuestionPollResults = ({question, author, pageNotFound}) => {
     if (pageNotFound) return <PageNotFound />;
   
     const optionOneVotes = question.optionOne.votes;
@@ -101,7 +70,6 @@ class QuestionPollResults extends React.Component {
         </Row>
       </Container>
     );
-  }
 };
 
 const mapStateToProps = ({questions, users} , props) => {

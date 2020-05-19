@@ -45,8 +45,6 @@ class QuestionPoll extends React.Component {
     if (pageNotFound) return <PageNotFound />;
     if (answerSubmitted) return <Redirect to={`/question/${id}/results`} />;
 
-    console.log(optionSelected);
-
     return (
       <Container className='mt-5'>
         <Row className='justify-content-center'>
