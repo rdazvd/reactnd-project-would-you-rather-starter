@@ -17,7 +17,7 @@ To log in, choose one of the users from the drop down list and click the "Login"
 
 ### Home view
 
-Afted logging in, the user is shown a list of unanswered questions.
+After logging in, the user is shown a list of unanswered questions.
 
 * To view all of the user's previously answered polls, click on the "Answered Questions" button
 * Click on the "Unanswered Questions" button to go back to the initial view
@@ -31,7 +31,7 @@ After submitting, the user is led to a view showing the current poll results.
 
 ### Seeing the leaderboard
 
-To see a leaderboard, click on the Leaderboard option. 
+To see a leaderboard, click on the Leaderboard option at the top navigation bar. 
 It will show a rank of users based on the sum of created questions and submitted answers.
 
 ### Creating a new question
