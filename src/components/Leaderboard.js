@@ -1,5 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  Card,
+  Col,
+  Container,
+  Image,
+  Row 
+} from 'react-bootstrap';
 
 const Leaderboard = ({ users }) => {
   const usersInfo = Object.keys(users)
@@ -24,25 +31,38 @@ const Leaderboard = ({ users }) => {
   });
 
   return (
-    <div>
+    <Container className='mt-5'>
       {usersInfo.map((user, index) =>(
-        <div key={index}>
-          <div>
-            <img src={user.avatar} alt={`Avatar of ${user.name}`} />
-          </div>
-          <div>
-            <p>Answered Questions: {user.questionsAnswered}</p>
-            <p>Asked questions: {user.questionsAsked}</p>
-            <p>Total Score: {user.totalScore}</p>
-          </div>
-        </div>
+        <Row key={index} className='justify-content-center'>
+          <Card className='p-4 mt-2 mb-3' style={{ width: '60%' }}>
+            <Card.Title>{user.name}</Card.Title>
+            <Row className='align-items-center'>
+              <Col xs={2}>
+                <Image
+                  src={user.avatar}
+                  alt={`Avatar of ${user.name}`}
+                  roundedCircle
+                  style={{
+                    height: '5rem',
+                    width: '5rem'
+                  }}
+                />
+              </Col>
+              <Col xs={5}>
+                <p>Answered Questions: {user.questionsAnswered}</p>
+                <p>Asked questions: {user.questionsAsked}</p>
+              </Col>
+              <Col xs={5}>
+                <h2>Total Score: {user.totalScore}</h2>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
       ))}
-    </div>
+    </Container>
   );
 };
 
-const mapStateToProps = ({users}) => ({
-  users
-});
+const mapStateToProps = ({users}) => ({ users });
 
 export default connect(mapStateToProps)(Leaderboard);
