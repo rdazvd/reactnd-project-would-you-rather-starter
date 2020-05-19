@@ -79,7 +79,7 @@ const mapStateToProps = ({questions, users} , props) => {
   return {
     id,
     question,
-    author: users[question['author']],
+    author: question ? users[question['author']] : null,
     pageNotFound: question ? false : true
   }
 };
